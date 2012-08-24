@@ -1,3 +1,6 @@
+require 'spec_helper'
+
+module Tractor
     describe Server do
         let(:server){ Tractor::Server.new('nandos','bob','/var/www/vhosts') }
         let(:ssh){ double("ssh").as_null_object }
@@ -38,3 +41,4 @@
             end
         end
     end
+end
