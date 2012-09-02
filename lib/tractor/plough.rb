@@ -1,36 +1,24 @@
 module Tractor
     class Plough
         attr_accessor :sites
-        attr_accessor :repository
-
-        def initialize(name, repository)
-            @sites = Hash.new
-            @repository = repository
-        end
-
-        def add_site(site)
-            @sites[site] = Site.new
+        attr_accessor :name
+        def initialize(name, sites)
+            @name = name
+            @sites = sites
         end
     end
 
     class Site
-        attr_accessor :revision
         attr_accessor :servers
         attr_accessor :name
         
-        def initialize(name, revision = 0, servers)
+        def initialize(name, servers)
             @name = name
-            @servers = Array.new
-            @servers.concat(servers)
-            @revision = revision
+            @servers = servers
         end
         def update(revision)
-            @revision = revision
         end
         def rollback
-            @revision = @revision - 1
-        end
-        def server_named()
         end
         def version
             versions = servers.collect{ |server| server.version }
