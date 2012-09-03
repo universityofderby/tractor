@@ -1,5 +1,12 @@
 source :rubygems
 
-gem 'cucumber'
-gem 'rspec'
-gem 'aruba'
+group :tools do
+    gem 'cucumber'
+    gem 'aruba'
+
+    gem 'rspec'
+
+    gem 'guard-cucumber'
+    gem 'guard-rspec'
+    gem 'rb-fsevent'
+end
