@@ -29,6 +29,7 @@ GEM
     json (1.7.5)
     listen (0.5.0)
     rb-fsevent (0.9.1)
+    rb-readline (0.4.2)
     rspec (2.11.0)
       rspec-core (~> 2.11.0)
       rspec-expectations (~> 2.11.0)
@@ -48,4 +49,5 @@ DEPENDENCIES
   guard-cucumber
   guard-rspec
   rb-fsevent
+  rb-readline
   rspec

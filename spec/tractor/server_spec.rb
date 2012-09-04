@@ -13,16 +13,16 @@ module Tractor
         it "has a base directory" do
             server.basedir.should == '/var/www/vhosts'
         end
-        describe "#version" do
+        describe "#revision" do
             it "should send svn info to ssh" do
                 ssh.should_receive(:execute).with("svn info").and_return(1)
                 server.ssh = ssh
-                server.version
+                server.revision
             end
             it "should raise an exception if there is no site" do
                 ssh.should_receive(:execute).with("svn info").and_return("not a working copy")
                 server.ssh = ssh
-                expect { server.version }.to raise_error("site not found")
+                expect { server.revision }.to raise_error("site not found")
             end
         end
 

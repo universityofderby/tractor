@@ -11,23 +11,30 @@ module Tractor
     class Site
         attr_accessor :servers
         attr_accessor :name
-        attr_accessor :deployed
+        attr_accessor :status
         
-        def initialize(name='default', servers=Hash.new, deployed=false)
+        def initialize(name='default', servers=Hash.new, status=false)
             @name = name
             @servers = servers
-            @deployed = deployed
+            @status = status
         end
-        def version
-            versions = servers.collect{ |server| server.version }
-            if versions.uniq.one?
-                versions
+        def revision
+            revisions = servers.collect{ |server| server.revision }
+            if revisions.uniq.one?
+                revisions.first
             else
-                raise "server version mismatch"
+                raise "server revision mismatch"
             end
         end
         def query
-            Array.new
+            {   
+                :revision => revision,
+                :status => @status,
+                :servers => @servers.collect{ |server| server.hostname }
+            } 
+        end
+        def deployed?
+            @status == 'deployed' 
         end
     end
 
@@ -43,14 +50,14 @@ module Tractor
             @basedir = basedir
         end
 
-        def version
-            revision = @ssh.execute("svn info")
-            raise("site not found") unless revision.is_a?(Numeric)
+        def revision
+            cmd_result = @ssh.execute("svn info")
+            raise("site not found") unless cmd_result.is_a?(Numeric)
         end
 
         def update
             begin
-                version
+                revision
             rescue
                 @ssh.execute("svn checkout #{basedir}")
             else

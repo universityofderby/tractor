@@ -9,4 +9,5 @@ group :tools do
     gem 'guard-cucumber'
     gem 'guard-rspec'
     gem 'rb-fsevent'
+    gem 'rb-readline'
 end

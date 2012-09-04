@@ -1,26 +1,22 @@
-Transform /^(-?\d+)$/ do |number|
-      number.to_i
-end
-
 Given /^a site has been created$/ do
-  @site = Tractor::Site.new
+    @site = Tractor::Site.new
 end
 
 Given /^a site that has been deployed$/ do
-    @site.deployed = true
+    @site.status = 'deployed'
 end
 
 When /^I query the site$/ do 
-  @output = @site.query
+    @output = @site.query
 end
 
 Then /^I should receive information on the site$/ do
-    @output.should have_key(:version)
+    @output.should have_key(:revision)
     @output.should have_key(:servers)
 end
 
 Given /^a site that hasn't been deployed$/ do
-    @site.deployed = false
+    @site.status = 'undeployed'
 end
 
 Then /^I should receive an error$/ do
