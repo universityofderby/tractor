@@ -8,6 +8,7 @@ group :tools do
 
     gem 'guard-cucumber'
     gem 'guard-rspec'
-    gem 'rb-fsevent'
     gem 'rb-readline'
+    gem 'rb-inotify' if RUBY_PLATFORM.downcase.include?("linux")
+    gem 'rb-fsevent' if RUBY_PLATFORM.downcase.include?("darwin")
 end
