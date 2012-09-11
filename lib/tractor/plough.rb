@@ -9,8 +9,8 @@ module Tractor
     end
 
     class Site
-        attr_accessor :servers
         attr_accessor :name
+        attr_accessor :servers
         attr_accessor :status
         
         def initialize(name='default', servers=Hash.new, status=false)

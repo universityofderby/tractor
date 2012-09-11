@@ -5,8 +5,8 @@ end
 Given /^it has 2 servers$/ do
     ssh = double('ssh').as_null_object
     ssh.stub(:execute).with('svn info').and_return(3)
-    @server1 = Tractor::Server.new('server1', ssh)
-    @server2 = Tractor::Server.new('server2', ssh)
+    @server1 = Tractor::Server.new('server1', 'bob', ssh)
+    @server2 = Tractor::Server.new('server2', 'bob', ssh)
     site.servers = [@server1, @server2] 
 end
 
