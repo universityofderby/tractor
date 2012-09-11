@@ -6,4 +6,6 @@ require 'aruba/api'
 require 'aruba/cucumber/hooks'
 require 'aruba/reporting'
 
+require 'cucumber/rspec/doubles'
+
 World(Aruba::Api)

@@ -23,7 +23,7 @@ module Tractor
             if revisions.uniq.one?
                 revisions.first
             else
-                raise "server revision mismatch"
+                raise "server revision mismatch #{revisions}"
             end
         end
         def query
@@ -44,10 +44,11 @@ module Tractor
         attr_accessor :basedir
         attr_accessor :ssh
 
-        def initialize(hostname, username, basedir)
+        def initialize(hostname, ssh, username=hostname, basedir='/var/www/vhosts')
             @hostname = hostname
             @username = username
             @basedir = basedir
+            @ssh = ssh
         end
 
         def revision
