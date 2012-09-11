@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module Tractor
     describe Server do
-        let(:server){ Tractor::Server.new('nandos','bob','/var/www/vhosts') }
+        let(:server){ Tractor::Server.new('nandos','ssh','bob','/var/www/vhosts') }
         let(:ssh){ double("ssh").as_null_object }
         it "has a hostname" do
             server.hostname.should == 'nandos'

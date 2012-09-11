@@ -4,7 +4,7 @@ class Server
     attr_accessor :basedir
     attr_accessor :ssh
 
-    def initialize(hostname, ssh, username=hostname, basedir='/var/www/vhosts')
+    def initialize(hostname, ssh, username, basedir='/var/www/vhosts')
         @hostname = hostname
         @username = username
         @basedir = basedir
