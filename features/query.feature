@@ -3,8 +3,7 @@ In order to support the sites
 As an administrator
 I want to find detailed information on deployed sites
     Background: Site created
-        Given a site has been created
-        And it has 2 servers
+        Given a site has been created with 2 servers
 
     Scenario: Query a deployed site
         Given a site that has been deployed
