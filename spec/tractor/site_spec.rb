@@ -30,7 +30,7 @@ module Tractor
                 server1.should_receive(:revision).and_return(2)
                 server2.should_receive(:revision).and_return(3)
                 site = Tractor::Site.new('development',[server1, server2])
-                expect { site.revision }.to raise_error("server revision mismatch")
+                expect { site.revision }.to raise_error("server revision mismatch [2, 3]")
             end
         end
         describe "#query" do
