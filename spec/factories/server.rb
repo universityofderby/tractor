@@ -3,5 +3,6 @@ FactoryGirl.define do
         hostname "server1"
         username "bob"
         basedir "/var/www/vhosts"
+        ssh nil
     end
 end

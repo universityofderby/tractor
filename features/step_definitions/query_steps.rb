@@ -39,7 +39,6 @@ Then /^I should receive information on the differences$/ do
 end
 
 def site
-    @site ||= Tractor::Site.new
     ssh = double('ssh').as_null_object
     ssh.stub(:execute).with('svn info').and_return(3)
     server1 = build(:server, hostname: "fire", ssh: ssh )
