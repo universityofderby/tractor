@@ -1,4 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/[UniversityofDerby]/[tractor].png)](http://travis-ci.org/[UniversityofDerby]/[tractor])
+[![Build Status](https://secure.travis-ci.org/[UniversityOfDerby]/[tractor].png)](http://travis-ci.org/[UniversityOfDerby]/[tractor])
 
 
 Tractor
