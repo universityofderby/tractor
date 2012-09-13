@@ -1,5 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/[UniversityOfDerby]/[tractor].png)](http://travis-ci.org/[UniversityOfDerby]/[tractor])
-
+[![Build Status](https://secure.travis-ci.org/UniversityOfDerby/tractor.png)](http://travis-ci.org/UniversityOfDerby/tractor)
 
 Tractor
 =======
