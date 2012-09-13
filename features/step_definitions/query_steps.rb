@@ -38,6 +38,14 @@ Then /^I should receive information on the differences$/ do
   pending # express the regexp above with the code you wish you had
 end
 
+Given /^a site doesn't exist$/ do
+      pending # express the regexp above with the code you wish you had
+end
+
+Then /^I should receive a warning$/ do
+      pending # express the regexp above with the code you wish you had
+end
+
 def site
     @site ||= Tractor::Site.new
     ssh = double('ssh').as_null_object

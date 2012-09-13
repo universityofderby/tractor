@@ -21,3 +21,8 @@ I want to find detailed information on deployed sites
         Then I should receive an inconsistency warning
         And I should receive information on the differences
 
+    Scenario: Query a non-existent site
+        Given a site doesn't exist
+        When I query the site
+        Then I should receive a warning
+
