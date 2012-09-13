@@ -1,9 +1,7 @@
-[![Build Status](https://secure.travis-ci.org/UniversityOfDerby/tractor.png)](http://travis-ci.org/UniversityOfDerby/tractor)
-
-Tractor
+Tractor[![Build Status](https://secure.travis-ci.org/UniversityOfDerby/tractor.png)](http://travis-ci.org/UniversityOfDerby/tractor) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/UniversityOfDerby/tractor)
 =======
 
-Code promotion/migration assistant for a simple setup.
+Code promotion/migration assistant for a simple infrastructure configurations.
 
 Path to live defaults to Development -> Test -> Production basis
 

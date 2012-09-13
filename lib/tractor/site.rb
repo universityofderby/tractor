@@ -18,6 +18,7 @@ module Tractor
             end
         end
         def query
+            raise "undeployed" unless deployed?
             {   
                 :revision => revision,
                 :status => @status,

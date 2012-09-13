@@ -1,5 +1,7 @@
 Given /^a site has been created with 2 servers$/ do
-    site
+    server1 = build_server("fire", 3)
+    server2 = build_server("ice", 3)
+    site.servers = [server1, server2]
 end
 
 Given /^a site that has been deployed$/ do
@@ -7,12 +9,12 @@ Given /^a site that has been deployed$/ do
 end
 
 When /^I query the site$/ do 
-    @output = site.query
+    @output = lambda { site.query }
 end
 
 Then /^I should receive information on the site$/ do
-    @output.should have_key(:revision)
-    @output.should have_key(:servers)
+    @output.call.should have_key(:revision)
+    @output.call.should have_key(:servers)
 end
 
 Given /^a site that hasn't been deployed$/ do
@@ -20,30 +22,29 @@ Given /^a site that hasn't been deployed$/ do
 end
 
 Then /^I should receive an error$/ do
-  pending #@output.should have_key(:error)
+    expect {@output.call}.to raise_error
 end
 
 Given /^a site with servers on different revisions$/ do
-    pending("factory girl") {
-        site.servers[:server1].revision = 1
-        site.servers[:server2].revision = 2
-    }
+    server1 = build_server("fire", 2)
+    server2 = build_server("ice", 3)
+    site.servers = [server1, server2]
 end
 
 Then /^I should receive an inconsistency warning$/ do
-  pending #@output.should have_key(:warning)
+    expect {@output.call}.to raise_error
 end
 
 Then /^I should receive information on the differences$/ do
-  pending # express the regexp above with the code you wish you had
+    pending # express the regexp above with the code you wish you had
 end
 
 def site
+    @site ||= build(:site)
+end
+
+def build_server(name, revision)
     ssh = double('ssh').as_null_object
-    ssh.stub(:execute).with('svn info').and_return(3)
-    server1 = build(:server, hostname: "fire", ssh: ssh )
-    server2 = build(:server, hostname: "ice", ssh: ssh )
-    site = Tractor::Site.new
-    site.servers = [server1, server2]
-    @site ||= site
+    ssh.stub(:execute).with('svn info').and_return(revision)
+    build(:server, hostname: name, ssh: ssh )
 end
