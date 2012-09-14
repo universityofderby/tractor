@@ -7,6 +7,7 @@ group :test do
     gem 'rspec'
     gem 'factory_girl'
     gem 'simplecov'
+    gem 'rdoc'
 end
 
 group :development do
